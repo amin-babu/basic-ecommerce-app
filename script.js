@@ -65,13 +65,17 @@ productsData.map((product) => {
 });
 
 
-// random colors pick
+// set up random colors
 const cards = document.querySelectorAll(".cart");
+let colorIndex = 0;
 
 cards.forEach(card => {
-  const randomPair = colorPairs[Math.floor(Math.random() * colorPairs.length)];
 
-  card.style.background = randomPair.card;
+  if (colorIndex === colorPairs.length) colorIndex = 0;
+  card.style.background = colorPairs[colorIndex].card;
   card.querySelector('.cta button').style.background =
-    randomPair.button;
+    colorPairs[colorIndex].button;
+
+  colorIndex++;
+
 });
