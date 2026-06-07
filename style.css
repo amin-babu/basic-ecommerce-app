@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #fafafa;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.274);
+}
+
+.navbar {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 18px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo a {
+  display: flex;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: auto;
+}
+
+/* Nav Menu */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #444;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-menu a:hover {
+  color: #000;
+}
+
+/* CTA Button */
+.cta-btn {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #111;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+.logo .menu-icon {
+  display: none;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+.logo .menu-icon.no-transition {
+  transition: none;
+}
+
+.logo .menu-icon.animate {
+  transform: rotate(180deg);
+}
+
+.logo img {
+  height: 50px;
+}
+
+.mobile-nav-menu {
+  position: absolute;
+  top: 105px;
+  left: 25px;
+
+  width: 180px;
+  background-color: #ffdacd;
+  border-top: 1px solid #dad9d9;
+  border-left: 1px solid #dad9d9;
+  border-right: 1px solid #dad9d9;
+
+  display: none;
+}
+
+.mobile-nav-menu ul {
+  list-style: none;
+}
+
+.mobile-nav-menu a {
+  display: block;
+  padding: 16px 20px;
+
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #dad9d9;
+}
+
+.mobile-nav-menu a:hover {
+  background-color: #f7ddd3;
+}
+
+.show-menu {
+  display: block;
+}
+
+.products_container {
+  background-color: #e7eff8;
+  padding: 1rem 0;
+}
+
+.products_container .all_products_info {
+  max-width: 1300px;
+  background-color: #101213;
+  color: white;
+  margin: 2rem auto;
+  text-align: center;
+  padding: 3rem 4rem;
+  border-radius: 40px;
+}
+
+.products_container .all_products_info > h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.products_container .all_products_info > p {
+  width: 55%;
+  margin: 10px auto 2rem;
+}
+
+.products_container .cart_container {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.cart_container .cart {
+  /* background-color: #311401; */
+  flex: 1 1 20%;
+  text-align: left;
+  border-radius: 1rem;
+}
+
+.cart .img {
+  height: 240px;
+}
+
+.cart .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.cart .product_info {
+  padding: 10px;
+}
+
+.cart .product_info .price_name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart .product_info > p {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.cart .cta {
+  padding: 0 10px 10px;
+}
+
+.cart .cta button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 1rem;
+  background-color: #fc6c06;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (width < 900px) {
+  .products_container .all_products_info {
+    padding: 3rem 2rem;
+  }
+
+  .cart_container .cart {
+    flex-basis: 30%;
+  }
+
+  .products_container .all_products_info > p {
+    width: 70%;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .logo .menu-icon {
+    display: block;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+  .navbar {
+    padding: 18px 23px;
+  }
+
+  .cart_container .cart {
+    flex-basis: 33%;
+  }
+}
+
+@media (width >= 768px) {
+  .mobile-nav-menu {
+    display: none;
+  }
+}
+
+@media (width <= 600px) {
+  .cart_container .cart {
+    flex-basis: 100%;
+  }
+
+  .products_container .all_products_info > p {
+    width: 97%;
+  }
+}

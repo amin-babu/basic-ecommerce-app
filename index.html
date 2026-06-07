@@ -6,9 +6,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Basic Ecommerce App</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+  <header>
+    <nav>
+      <div class="navbar">
+
+        <!-- Logo -->
+        <div class="logo">
+          <i class="fa-solid fa-bars menu-icon"></i>
+          <a href="/">
+            <img src="./logo.png" alt="">
+          </a>
+        </div>
+
+        <!-- Navigation Menu -->
+        <ul class="nav-menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Categories</a></li>
+          <li><a href="#">Deals</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+
+        <!-- CTA Button -->
+        <div class="nav-action">
+          <a href="#" class="cta-btn">Shop Now</a>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- mobile nav menu -->
+    <div class="mobile-nav-menu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="#">Deals</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Product cart section -->
+  <section class="products_container">
+    <div class="all_products_info">
+      <h2>Our Signature Dishes</h2>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat nulla, quas numquam libero hic ex accusamus?
+        Animi delectus molestiae
+      </p>
+
+      <div class="cart_container">
+      </div>
+    </div>
+  </section>
+  <script src="./data.js"></script>
+  <script src="./colors.js"></script>
   <script src="./script.js"></script>
 </body>
 
