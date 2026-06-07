@@ -16,11 +16,11 @@ const colorPairs = [
     button: '#1990c4',
   },
   {
-    card: '#3B0764',
-    button: '#C583FD',
+    card: '#640707',
+    button: '#f32525',
   },
   {
     card: '#3F2305',
-    button: '#FBBF24',
+    button: '#f1b10e',
   },
 ];
