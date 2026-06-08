@@ -41,13 +41,13 @@ menuIcon.addEventListener("click", () => {
 
 const cartContainer = document.querySelector('.products_container .cart_container');
 
-productsData.map((product) => {
-  return cartContainer.innerHTML += `
+productsData.forEach((product) => {
+  cartContainer.innerHTML += `
     <div class="cart">
       <div class="img">
         <img
           src="${product.image}"
-          alt=""
+          alt="${product.name}"
           loading="lazy">
       </div>
       <div class="product_info">
