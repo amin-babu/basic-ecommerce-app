@@ -14,7 +14,7 @@ nav {
   width: 100%;
   border-bottom: 1px solid #e5e5e5;
   background-color: #fafafa;
-  position: relative;
+  position: fixed;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.274);
 }
 
@@ -63,10 +63,10 @@ nav {
 .nav-action {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background-color: #111;
+  gap: 8px;
+  background-color: #0d7763;
   color: white;
-  padding: 12px 24px;
+  padding: 10px 14px;
   border-radius: 8px;
   font-weight: 600;
   transition: 0.3s;
@@ -74,7 +74,7 @@ nav {
 }
 
 .nav-action:hover {
-  background-color: #333;
+  background-color: #0a6756;
   transform: translateY(-2px);
 }
 
@@ -97,7 +97,7 @@ nav {
 }
 
 .mobile-nav-menu {
-  position: absolute;
+  position: fixed;
   top: 105px;
   left: 25px;
   width: 180px;
@@ -131,7 +131,7 @@ nav {
 
 .products_container {
   background-color: #e7eff8;
-  padding: 1rem 0;
+  padding: 102px 0 1rem;
 }
 
 .products_container .all_products_info {
@@ -244,6 +244,10 @@ nav {
   cursor: pointer;
 }
 
+.cart .cta button.disable {
+  pointer-events: none;
+}
+
 .cart_product_info {
   display: flex;
   flex-direction: column;
@@ -336,16 +340,26 @@ nav {
   position: fixed;
   top: 30px;
   left: -300px;
-  background-color: rgb(134, 250, 134);
-  color: green;
-  border-left: 5px solid green;
+  /* width: 200px;
+  height: 38px;
   display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px;
+  align-items: center; */
+  padding: 6px 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.723);
   font-weight: 600;
   transition: all 0.3s;
+}
+
+.pop_notification.success {
+  background-color: rgb(134, 250, 134);
+  color: green;
+  border-left: 5px solid green;
+}
+
+.pop_notification.delete {
+  background-color: rgb(253, 184, 184);
+  color: rgb(140, 3, 3);
+  border-left: 5px solid rgb(135, 0, 0);
 }
 
 /* =========================
@@ -354,7 +368,7 @@ nav {
 
 @media (width < 900px) {
   .products_container .all_products_info {
-    padding: 3rem 2rem;
+    padding: 7rem 23px 3rem;
     border-radius: 0;
     margin: 0;
   }
@@ -364,7 +378,7 @@ nav {
   }
 
   .nav-action {
-    padding: 8px 15px;
+    padding: 7px 13px;
   }
 
   .cart_container .cart {

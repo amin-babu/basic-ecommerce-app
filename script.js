@@ -101,11 +101,18 @@ removeCartDetails.addEventListener('click', () => {
 
 
 const cartProductContainer = document.querySelector('.cart_product_info');
+const cartQuantity = document.querySelector('.nav-action span');
 
 const addToCart = (productInfo) => {
-  showMessage();
 
+
+  showMessage('Product added to cart', 'success');
   const product = productInfo.parentElement.parentElement;
+  const addToCartBtn = product.querySelector('.cta button');
+
+  addToCartBtn.innerHTML = `Added to cart <i class="fa-solid fa-check"></i>`;
+  addToCartBtn.classList.add('disable');
+
   cartProductContainer.innerHTML += `
     <div id="${product.id}" class="cart_product">
       <div class="cart_product_left">
@@ -128,10 +135,14 @@ const addToCart = (productInfo) => {
       </div>
     </div>
   `;
+
+  const allCartProducts = document.querySelectorAll('.cart_product');
+  cartQuantity.innerText = `(${allCartProducts.length})`;
 };
 
 
 const deleteProduct = (productInfo) => {
+  showMessage('Product deleted', 'delete');
   const thisProductID = productInfo.parentElement.parentElement.id;
   const allCartProducts = [...document.querySelectorAll('.cart_product')];
   const updatedProducts = allCartProducts.filter(product => product.id !== thisProductID);
@@ -161,12 +172,34 @@ const deleteProduct = (productInfo) => {
       </div>
     </div>
   `).join("");
+
+  cartQuantity.innerText = `(${updatedProducts.length})`;
+
+  const allProducts = [...document.querySelectorAll('.cart')];
+  for (product of allProducts) {
+    if (product.id === thisProductID) {
+      const addToCartBtn = product.querySelector('.cta button');
+      addToCartBtn.classList.remove('disable');
+      addToCartBtn.innerHTML = `
+        Add to cart <i class="fa-brands fa-first-order"></i>
+      `;
+    }
+  }
+
+
 };
 
-const showNotification = document.querySelector('.pop_notification')
+const showNotification = document.querySelector('.pop_notification');
+const showNotificationMessage = showNotification.querySelector('p');
 
-const showMessage = () => {
+const showMessage = (message, status) => {
+  showNotificationMessage.innerText = message;
+  showNotification.classList.add(status);
   showNotification.style.left = '50px';
-
-  setTimeout(() => showNotification.style.left = '-300px', 4000);
+  setTimeout(() => {
+    showNotification.style.left = '-300px';
+    showNotification.classList.remove('delete');
+  }, 4000);
 };
+
+
