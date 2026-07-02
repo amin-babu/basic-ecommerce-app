@@ -362,6 +362,34 @@ nav {
   border-left: 5px solid rgb(135, 0, 0);
 }
 
+.total_cost {
+  border-top: 1px solid gray;
+  padding: 10px;
+  margin-top: 10px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.3rem;
+}
+
+.total_cost h5 {
+  /* text-align: right; */
+  font-weight: 600;
+}
+
+.total_cost button {
+  padding: 4px 8px;
+  cursor: pointer;
+  border: 1px solid gray;
+  border-radius: 4px;
+  transition: 0.6s;
+}
+
+.total_cost button:hover {
+  background-color: #d6d4d4;
+}
+
 /* =========================
    Responsive
 ========================= */

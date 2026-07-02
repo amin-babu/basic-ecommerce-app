@@ -102,10 +102,11 @@ removeCartDetails.addEventListener('click', () => {
 
 const cartProductContainer = document.querySelector('.cart_product_info');
 const cartQuantity = document.querySelector('.nav-action span');
+const totalPriceDispay = document.querySelector('.total_cost span');
+totalPriceDispay.innerText = '0000';
+let totalPrice = 0;
 
 const addToCart = (productInfo) => {
-
-
   showMessage('Product added to cart', 'success');
   const product = productInfo.parentElement.parentElement;
   const addToCartBtn = product.querySelector('.cta button');
@@ -122,7 +123,7 @@ const addToCart = (productInfo) => {
           <div class="quantity">
             <button class="decrease">-</button>
             <button class="quantity_value">1</button>
-            <button class="increase">+</button>
+            <button class="increase" onclick="quantityIncrease(this)">+</button>
           </div>
         </div>
       </div>
@@ -136,6 +137,10 @@ const addToCart = (productInfo) => {
     </div>
   `;
 
+  let productPrice = parseInt(product.querySelector('.price_name .price').textContent.slice(1));
+  totalPrice += productPrice;
+  totalPriceDispay.innerText = totalPrice;
+
   const allCartProducts = document.querySelectorAll('.cart_product');
   cartQuantity.innerText = `(${allCartProducts.length})`;
 };
@@ -146,6 +151,7 @@ const deleteProduct = (productInfo) => {
   const thisProductID = productInfo.parentElement.parentElement.id;
   const allCartProducts = [...document.querySelectorAll('.cart_product')];
   const updatedProducts = allCartProducts.filter(product => product.id !== thisProductID);
+
 
   cartProductContainer.innerHTML = '';
 
@@ -159,7 +165,7 @@ const deleteProduct = (productInfo) => {
           <div class="quantity">
             <button class="decrease">-</button>
             <button class="quantity_value">1</button>
-            <button class="increase">+</button>
+            <button class="increase" onclick="quantityIncrease(this)">+</button>
           </div>
         </div>
       </div>
@@ -172,6 +178,17 @@ const deleteProduct = (productInfo) => {
       </div>
     </div>
   `).join("");
+
+  totalPrice = 0;
+  if (updatedProducts.length === 0) {
+    totalPriceDispay.innerText = '0000';
+  } else {
+    for (let cartProduct of updatedProducts) {
+      let productPrice = parseInt(cartProduct.querySelector('.cart_product_right h3').textContent.slice(1));
+      totalPrice += productPrice;
+      totalPriceDispay.innerText = totalPrice;
+    }
+  }
 
   cartQuantity.innerText = `(${updatedProducts.length})`;
 
@@ -186,8 +203,16 @@ const deleteProduct = (productInfo) => {
     }
   }
 
-
 };
+
+const quantityIncrease = (productInfo) => {
+  let quantity = parseInt(productInfo.previousElementSibling.innerText);
+  quantity++;
+  productInfo.previousElementSibling.textContent = quantity;
+  let perProductPrice = productsData.find(product => product.id == productInfo.closest('.cart_product').id).price;
+  let priceByQuantity = quantity * perProductPrice;
+  productInfo.closest('.cart_product').querySelector('.cart_product_right h3').textContent = `$${priceByQuantity}`;
+}
 
 const showNotification = document.querySelector('.pop_notification');
 const showNotificationMessage = showNotification.querySelector('p');
@@ -203,3 +228,22 @@ const showMessage = (message, status) => {
 };
 
 
+const clearBtn = document.querySelector('.total_cost button');
+clearBtn.onclick = () => {
+  showMessage('Order Information Clear', 'delete');
+  cartProductContainer.innerHTML = '';
+  totalPriceDispay.innerHTML = '0000';
+  const allProductsBtn = [...document.querySelectorAll('.cart .cta button')];
+
+  for (let productBtn of allProductsBtn) {
+    if (productBtn.classList.contains('disable')) {
+      productBtn.classList.remove('disable');
+      productBtn.innerHTML = `
+        Add to cart <i class="fa-brands fa-first-order"></i>
+      `;
+    }
+  }
+
+  cartQuantity.innerText = '(0)';
+
+};
